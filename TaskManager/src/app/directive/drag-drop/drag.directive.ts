@@ -1,5 +1,9 @@
 import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/core';
 
+/**
+ * 拖拽指令
+ */
+
 @Directive({
   selector: '[app-draggable][dragClass]'
 })
