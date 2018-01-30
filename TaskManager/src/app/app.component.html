@@ -1,0 +1,24 @@
+<mat-sidenav-container [class.dark-theme]="darkTheme">
+  <!--侧边栏-->
+  <mat-sidenav #sidenav mode="over">
+    <app-sidebar (itemClickedEmitter)="sidenav.toggle()">
+      我是侧边栏
+    </app-sidebar>
+  </mat-sidenav>
+  <!--主体-->
+  <div class="site">
+    <!--header-->
+    <header>
+      <app-header (toggle)="sidenav.toggle()" (switchTheme)="switchTheme($event)"></app-header>
+    </header>
+    <!--content-->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <!--footer-->
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+  </div>
+</mat-sidenav-container>
+

@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+
+  <!--左侧边栏-->
+  <button mat-icon-button (click)="openSideBar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>企业项目管理</span>
+
+  <!--空白-->
+  <span class="fill-remaining-space"></span>
+
+  <!--黑夜模式开关-->
+  <mat-slide-toggle (change)="onSwitchTheme($event.checked)">黑夜模式</mat-slide-toggle>
+</mat-toolbar>

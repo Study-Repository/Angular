@@ -1,0 +1,24 @@
+<div class="task-lists">
+  <!--列表-->
+  <app-task-list *ngFor="let list of lists;" class="list-container">
+    <!--头部-->
+    <app-task-header
+      [header]="list.name"
+      (newTaskEmitter)="onNewTaskAction()"
+      (moveListEmitter)="onMoveListAction()"
+      (deleteListEmitter)="onDeleteListAction()"
+      (modifyListEmitter)="onModifyListAction()"
+    ></app-task-header>
+    <!--内容-->
+    <app-task-item
+      *ngFor="let task of list.tasks;"
+      [item]="task"
+      (itemClickedEmitter)="onItemClickedAction(task)"
+    ></app-task-item>
+  </app-task-list>
+</div>
+
+<!--悬浮按钮-->
+<button type="button" mat-fab class="fab-button" (click)="onAddTaskListAction()" [@fabButtonAnimation]="'pop'">
+  <mat-icon>add</mat-icon>
+</button>

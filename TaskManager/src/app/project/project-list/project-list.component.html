@@ -1,0 +1,13 @@
+<div class="projects-lists" [@listItemAnimation]="projects.length">
+  <app-project-item
+    *ngFor="let project of projects;"
+    [item]="project"
+    class="card"
+    (inviteEmitter)="inviteAction()"
+    (deleteEmitter)="deleteAction(project)"
+  ></app-project-item>
+</div>
+
+<button class="fab-button" mat-fab type="button" (click)="openNewProjectDialog()" [@fabButtonAnimation]="'pop'">
+  <mat-icon>add</mat-icon>
+</button>

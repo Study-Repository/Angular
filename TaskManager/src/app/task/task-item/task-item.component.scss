@@ -1,0 +1,69 @@
+//外层
+.container {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+//内容
+.content {
+  order: 1;
+  width: 100%;
+  padding: 5px;
+}
+//内容-完成状态
+.content-complete {
+  opacity: 0.7;
+  color: crimson;
+  text-decoration: line-through;
+}
+
+//checkBox
+.complete-status {
+  order: -1;
+}
+
+//头像
+mat-icon.avatar {
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 12px;
+  order: 3;
+}
+
+//底部
+.bottom-bar {
+  margin-top: 3px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  width: 100%;
+  order: 1;
+}
+//底部-时间
+.bottom-date {
+  background-color: #f53d3d;
+  color: white;
+}
+//底部-闹钟
+.alarm {
+  font-size: 18px;
+}
+
+//Priority
+.priority-normal {
+  border-left: 3px solid #A6A6A6;
+}
+.priority-important {
+  border-left: 3px solid orange;
+}
+.priority-emergency {
+  border-left: 3px solid red;
+}
+
+// 拖拽样式
+.drag-start {
+  opacity: 0.5;
+  border: red dashed 2px;
+}

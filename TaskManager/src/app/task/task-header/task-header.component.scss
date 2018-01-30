@@ -1,0 +1,18 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.fill {
+  flex: 1;
+  text-align: center;
+}
+
+.menu-icon {
+  line-height: 1;
+}

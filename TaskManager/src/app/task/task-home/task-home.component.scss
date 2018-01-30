@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.task-lists {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+}
+
+.list-container {
+  flex: 0 0 360px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.fab-button {
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+}

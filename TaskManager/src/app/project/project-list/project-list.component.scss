@@ -1,0 +1,22 @@
+.projects-lists {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.card {
+  height: 360px;
+  flex: 0 0 360px;
+  margin: 10px;
+}
+
+.fab-button {
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+  //z-index: 999;
+}

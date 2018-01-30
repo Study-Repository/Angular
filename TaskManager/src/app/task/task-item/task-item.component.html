@@ -1,0 +1,28 @@
+<mat-list-item
+  class="container"
+  [@taskItemHover]="taskItemHoverState"
+  [ngClass]="{
+    'priority-normal': item.priority == 3,
+    'priority-important': item.priority == 2,
+    'priority-emergency': item.priority == 1
+  }"
+  [app-draggable]="true"
+  [dragClass]="'drag-start'"
+  (click)="onItemClickedAction()"
+>
+  <!--复选框-->
+  <mat-checkbox [checked]="item.complete" class="complete-status" (click)="onCheckboxClickedAction($event)"></mat-checkbox>
+  <!--内容-->
+  <div mat-line class="content" [ngClass]="{'content-complete': item.complete}">
+    <span [matTooltip]="item.desc">{{item.desc}}</span>
+  </div>
+  <!--底部-->
+  <div mat-line class="bottom-bar">
+    <span class="bottom-date" *ngIf="item.dueDate">
+      {{item.dueDate | date: 'yyyy-MM-dd'}}
+    </span>
+    <mat-icon *ngIf="item.reminder" class="alarm">alarm</mat-icon>
+  </div>
+  <!--头像-->
+  <mat-icon [svgIcon]="avatar" mat-list-avatar class="avatar"></mat-icon>
+</mat-list-item>

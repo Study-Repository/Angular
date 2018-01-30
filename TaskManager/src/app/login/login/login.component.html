@@ -1,0 +1,48 @@
+<form>
+  <!--左侧-->
+  <mat-card>
+    <!--header-->
+    <mat-card-header>
+      <mat-card-title>登录: </mat-card-title>
+    </mat-card-header>
+
+    <!--content-->
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="您的email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="您的password">
+      </mat-form-field>
+      <button mat-raised-button type="button" color="primary">登录</button>
+    </mat-card-content>
+
+    <!--actions-->
+    <mat-card-actions align="end" style="flex-direction: column;">
+      <p style="font-size: 14px">
+        还没有账号?
+        <a routerLink="/register" style="margin-top: 10px;font-size: 14px">注册</a>
+      </p>
+      <p style="font-size: 14px">
+        忘记密码?
+        <a href="" style="margin-top: 10px;font-size: 14px">找回</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+
+  <!--右侧-->
+  <mat-card>
+    <!--header-->
+    <mat-card-header>
+      <mat-card-title>每日佳句</mat-card-title>
+      <mat-card-subtitle>当你最终放开了过去，更好的事就会到来。</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image src="/assets/imgs/quote_placeholder.jpg" alt="">
+
+    <!--content-->
+    <mat-card-content>
+      When you finally let go of the past, something better comes along.
+    </mat-card-content>
+  </mat-card>
+</form>
