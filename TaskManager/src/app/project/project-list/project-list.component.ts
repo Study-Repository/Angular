@@ -65,6 +65,8 @@ export class ProjectListComponent implements OnInit {
         'desc': '这是一个企业内部项目',
         'coverImg': `assets/imgs/covers/${this.projects.length}.jpg`
       }];
+
+      // 手动触发angular的变更检测
       this.cd.markForCheck();
     })
   }
@@ -81,6 +83,9 @@ export class ProjectListComponent implements OnInit {
         this.projects = this.projects.filter(item => item.id != project.id);
       }
     });
+
+    // 手动触发angular的变更检测
+    this.cd.markForCheck();
   }
 
 }

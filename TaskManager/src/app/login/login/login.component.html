@@ -1,6 +1,6 @@
-<form>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup, $event)">
   <!--左侧-->
-  <mat-card>
+  <mat-card class="card">
     <!--header-->
     <mat-card-header>
       <mat-card-title>登录: </mat-card-title>
@@ -9,12 +9,12 @@
     <!--content-->
     <mat-card-content>
       <mat-form-field class="full-width">
-        <input matInput type="text" placeholder="您的email">
+        <input matInput type="text" placeholder="您的email" formControlName="email">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="您的password">
+        <input matInput type="password" placeholder="您的password" formControlName="password">
       </mat-form-field>
-      <button mat-raised-button type="button" color="primary">登录</button>
+      <button mat-raised-button type="submit" color="primary" [disabled]="formGroup.invalid">登录</button>
     </mat-card-content>
 
     <!--actions-->
@@ -31,18 +31,18 @@
   </mat-card>
 
   <!--右侧-->
-  <mat-card>
+  <mat-card class="card">
     <!--header-->
     <mat-card-header>
       <mat-card-title>每日佳句</mat-card-title>
-      <mat-card-subtitle>当你最终放开了过去，更好的事就会到来。</mat-card-subtitle>
+      <mat-card-subtitle>{{(quote$ | async).cn}}</mat-card-subtitle>
     </mat-card-header>
 
-    <img mat-card-image src="/assets/imgs/quote_placeholder.jpg" alt="">
+    <img mat-card-image src="/assets/imgs/quotes/{{(quote$ | async).pic}}" alt="quote image">
 
     <!--content-->
     <mat-card-content>
-      When you finally let go of the past, something better comes along.
+      {{(quote$ | async)?.en}}
     </mat-card-content>
   </mat-card>
 </form>

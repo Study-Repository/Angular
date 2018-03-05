@@ -12,14 +12,30 @@ import { HttpModule } from '@angular/http';
 import { loadSvgResources } from '../utils/svg.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+
 import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
+
+import { ServicesModule } from '../services/services.module';
+
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/catch';
+
+import '../utils/debug.util';
+
+import { AppStoreModule } from '../redux/reducers';
+import { AppEffectsModule } from '../redux/effects';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     HttpModule,
-    SharedModule
+    SharedModule,
+    ServicesModule.forRoot(),
+    AppStoreModule,
+    AppEffectsModule,
   ],
   exports: [
     AppRoutingModule,
@@ -32,6 +48,12 @@ import { SharedModule } from '../shared/shared.module';
     HeaderComponent,
     FooterComponent,
     SidebarComponent
+  ],
+  providers: [
+    {provide: 'BASE_CONFIG', useValue: {
+        uri: 'http://192.168.10.168:8080',
+      }
+    }
   ]
 })
 export class CoreModule {

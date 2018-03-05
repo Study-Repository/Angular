@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewTaskComponent} from '../new-task/new-task.component';
 import {MoveTaskComponent} from '../move-task/move-task.component';
@@ -6,6 +6,7 @@ import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog
 import {NewTaskListComponent} from '../new-task-list/new-task-list.component';
 import {routerAnimation} from '../../animations/router.animation';
 import {fabButtonAnimation} from '../../animations/fabButton.animation';
+import {DragData} from '../../directive/drag-drop.service';
 
 @Component({
   selector: 'app-task-home',
@@ -14,7 +15,8 @@ import {fabButtonAnimation} from '../../animations/fabButton.animation';
   animations: [
     routerAnimation,
     fabButtonAnimation
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskHomeComponent implements OnInit {
 
@@ -22,6 +24,7 @@ export class TaskHomeComponent implements OnInit {
     {
       id: 1,
       name: '待办',
+      order: 1,
       tasks: [
         {
           id: 1,
@@ -53,6 +56,7 @@ export class TaskHomeComponent implements OnInit {
     {
       id: 2,
       name: '进行中',
+      order: 2,
       tasks: [
         {
           id: 1,
@@ -114,5 +118,25 @@ export class TaskHomeComponent implements OnInit {
   onAddTaskListAction() {
     let dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '新建列表'}});
     dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
+
+  handleMove(srcData: DragData, list) {
+    console.log(srcData);
+    switch (srcData.tag) {
+      case 'task-item':
+        break;
+      case 'task-list':
+        // 对换order
+        const srcList = srcData.data;
+        const tempOrder = srcList.order;
+        srcList.order = list.order;
+        list.order = tempOrder;
+        break;
+    }
+  }
+
+  // 快速创建任务
+  handleQuickTask(desc: string) {
+    console.log(desc);
   }
 }

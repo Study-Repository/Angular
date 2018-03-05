@@ -1,6 +1,18 @@
 <div class="task-lists">
   <!--列表-->
-  <app-task-list *ngFor="let list of lists;" class="list-container">
+  <app-task-list
+    *ngFor="let list of lists;"
+    class="list-container"
+    [app-draggable]="true"
+    [dragTag]="'task-list'"
+    [dragData]="list"
+    [dragClass]="'drag-start'"
+    app-droppable
+    [dropTags]="['task-item', 'task-list']"
+    [dragEnterClass]="'drag-enter'"
+    (droppedEmitter)="handleMove($event, list)"
+    [ngStyle]="{'order': list.order}"
+  >
     <!--头部-->
     <app-task-header
       [header]="list.name"
@@ -9,6 +21,10 @@
       (deleteListEmitter)="onDeleteListAction()"
       (modifyListEmitter)="onModifyListAction()"
     ></app-task-header>
+    <!--快速创建-->
+    <app-quick-task
+      (sendQuickTaskEmitter)="handleQuickTask($event)"
+    ></app-quick-task>
     <!--内容-->
     <app-task-item
       *ngFor="let task of list.tasks;"

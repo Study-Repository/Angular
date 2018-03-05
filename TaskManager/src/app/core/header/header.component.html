@@ -11,4 +11,5 @@
 
   <!--黑夜模式开关-->
   <mat-slide-toggle (change)="onSwitchTheme($event.checked)">黑夜模式</mat-slide-toggle>
+  <button mat-button style="margin-top: -5px" (click)="logoutAction()" *ngIf="(auth$ | async)?.token">退出登录</button>
 </mat-toolbar>
